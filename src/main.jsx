@@ -11,6 +11,7 @@ import theme from "./mui/theme.js";
 // styles
 import "./styles/index.css";
 import "./styles/fonts.css";
+import { BrowserRouter } from "react-router-dom";
 
 const client = new ApolloClient({
   uri: "https://api-eu-west-2.hygraph.com/v2/cljiexfu601h501ul5bc00sfv/master",
@@ -19,8 +20,10 @@ const client = new ApolloClient({
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ApolloProvider client={client}>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
   </ApolloProvider>
 );

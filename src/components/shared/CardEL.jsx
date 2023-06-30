@@ -41,17 +41,17 @@ const CardEl = ({ title, slug, coverPhoto, author }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Link
+        <Link
           to={`/blogs/${slug}`}
           style={{ textDecoration: "none", width: "100%" }}
-        > */}
+        >
           <Button
             variant="outlined"
             sx={{ borderRadius: 3, width: "100%", fontFamily: "inherit" }}
           >
             مطالعه مقاله
           </Button>
-        {/* </Link> */}
+        </Link>
       </CardActions>
     </Card>
   );
