@@ -1,15 +1,27 @@
 module.exports = {
-  env: { browser: true, es2020: true },
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: 'module',
+    babelOptions: {
+      configFile: './babel.config.js',
+    },
+  },
+  env: {
+    browser: true,
+    es2021: true,
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended',
   ],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
+  plugins: ['react', 'react-hooks', 'prettier'],
   rules: {
-    'react-refresh/only-export-components': 'warn',
+    'no-console': 'warn',
+    'no-unused-vars': 'warn',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
-}
+};
