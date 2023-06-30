@@ -1,6 +1,6 @@
 import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
-import Authors from "../../author/Authors";
+import Authors from "../author/Authors";
 import Blogs from "../blog/Blogs";
 
 const HomePage = () => {

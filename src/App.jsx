@@ -1,12 +1,11 @@
-import Header from "./components/layout/Header";
-import HomePage from "./components/layout/home/HomePage";
+import HomePage from "./components/home/HomePage";
+import Layout from "./components/layout/Layout";
 
 const App = () => {
   return (
-    <>
-      <Header />
+    <Layout>
       <HomePage />
-    </>
+    </Layout>
   );
 };
 
