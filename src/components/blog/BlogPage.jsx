@@ -21,7 +21,6 @@ const BlogPage = () => {
 
   if (error) return <h3>Something went wrong</h3>;
 
-  console.log(data);
   return (
     <Container maxWidth="lg">
       <Grid container>

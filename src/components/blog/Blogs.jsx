@@ -7,7 +7,6 @@ import Loader from "../shared/Loader";
 
 const Blogs = () => {
   const { loading, data, error } = useQuery(GET_BLOGS_INFO);
-  console.log({ loading, data, error });
 
   if (loading) return <Loader />;
   if (error) return <h3>Error</h3>;

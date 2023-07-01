@@ -12,7 +12,7 @@ const CommentForm = ({ slug }) => {
   const [text, setText] = useState("");
   const [isPressed, setIsPressed] = useState(false);
 
-  const [sendComment, { loading, data, error }] = useMutation(SEND_COMMENT, {
+  const [sendComment, { loading, data }] = useMutation(SEND_COMMENT, {
     variables: { name, email, text, slug },
   });
 

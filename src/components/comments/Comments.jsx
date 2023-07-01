@@ -12,7 +12,6 @@ const Comments = ({ slug }) => {
 
   if (error) return <h3>Something went wrong</h3>;
 
-  console.log(data);
   return (
     <Grid
       container

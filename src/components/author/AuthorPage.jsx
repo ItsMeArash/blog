@@ -21,7 +21,6 @@ const AuthorPage = () => {
 
   if (error) return <h3>Error</h3>;
 
-  console.log(data);
   return (
     <Container maxWidth="lg">
       <Grid container mt={10}>
