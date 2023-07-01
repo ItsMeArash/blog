@@ -22,14 +22,16 @@ const CardEl = ({ title, slug, coverPhoto, author }) => {
         image={coverPhoto.url}
         alt={slug}
       />
-      <CardHeader
-        avatar={<Avatar src={author.avatar.url} sx={{ marginLeft: 2 }} />}
-        title={
-          <Typography component="p" variant="p" color="text.secondary">
-            {author.name}
-          </Typography>
-        }
-      />
+      {author && (
+        <CardHeader
+          avatar={<Avatar src={author.avatar.url} sx={{ marginLeft: 2 }} />}
+          title={
+            <Typography component="p" variant="p" color="text.secondary">
+              {author.name}
+            </Typography>
+          }
+        />
+      )}
       <CardContent>
         <Typography
           component="h3"
