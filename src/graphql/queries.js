@@ -67,6 +67,7 @@ export const GET_POST_INFO = gql`
           avatar {
             url
           }
+          field
         }
       }
       content {
