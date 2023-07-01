@@ -1,10 +1,39 @@
+import { useMutation } from "@apollo/client";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { SEND_COMMENT } from "../../graphql/mutations";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CommentForm = ({ slug }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
+  const [isPressed, setIsPressed] = useState(false);
+
+  const [sendComment, { loading, data, error }] = useMutation(SEND_COMMENT, {
+    variables: { name, email, text, slug },
+  });
+
+  const sendHandler = () => {
+    if (name && email && email) {
+      sendComment();
+      setIsPressed(true);
+    } else {
+      toast.warn("تمام فیلدها را پر کنید", {
+        position: "top-center",
+      });
+    }
+  };
+
+  if (data && isPressed) {
+    toast.success("کامنت ارسال شد و در انتظار تایید می‌باشد", {
+      position: "top-center",
+    });
+    setIsPressed(false);
+  }
+
   return (
     <Grid
       container
@@ -26,7 +55,7 @@ const CommentForm = ({ slug }) => {
           variant="outlined"
           sx={{ width: "100%" }}
           value={name}
-          onChange={event => setName(event.target.value)}
+          onChange={(event) => setName(event.target.value)}
         />
       </Grid>
       <Grid item xs={12} m={2}>
@@ -35,7 +64,7 @@ const CommentForm = ({ slug }) => {
           variant="outlined"
           sx={{ width: "100%" }}
           value={email}
-          onChange={event => setEmail(event.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
         />
       </Grid>
       <Grid item xs={12} m={2}>
@@ -44,14 +73,31 @@ const CommentForm = ({ slug }) => {
           variant="outlined"
           sx={{ width: "100%" }}
           value={text}
-          onChange={event => setText(event.target.value)}
+          onChange={(event) => setText(event.target.value)}
           multiline
           minRows={4}
         />
       </Grid>
       <Grid item xs={12} m={2}>
-        <Button variant="contained" style={{fontFamily: "inherit"}}>ارسال کامنت</Button>
+        {loading ? (
+          <Button
+            style={{ fontFamily: "inherit" }}
+            variant="contained"
+            disabled
+          >
+            در حال ارسال
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            style={{ fontFamily: "inherit" }}
+            onClick={sendHandler}
+          >
+            ارسال کامنت
+          </Button>
+        )}
       </Grid>
+      <ToastContainer />
     </Grid>
   );
 };
