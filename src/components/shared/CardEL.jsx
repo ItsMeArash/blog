@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardMedia,
   Typography,
+  Box,
 } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -15,29 +16,38 @@ const CardEl = ({ title, slug, coverPhoto, author }) => {
   console.log(slug);
   return (
     <Card
-      sx={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px", borderRadius: 4 }}
+      sx={{
+        boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+        borderRadius: 4,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        height: { xs: 420, sm: 445, md: 510, lg: 480, xl: 480 },
+      }}
     >
-      <CardMedia
-        component="img"
-        height="194"
-        image={coverPhoto.url}
-        alt={slug}
-      />
-      {author && (
-        <CardHeader
-          avatar={<Avatar src={author.avatar.url} sx={{ marginLeft: 2 }} />}
-          title={
-            <Link
-              to={`/authors/${author.slug}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Typography component="p" variant="p" color="text.secondary">
-                {author.name}
-              </Typography>
-            </Link>
-          }
+      <Box>
+        <CardMedia
+          component="img"
+          height="194"
+          image={coverPhoto.url}
+          alt={slug}
         />
-      )}
+        {author && (
+          <CardHeader
+            avatar={<Avatar src={author.avatar.url} sx={{ marginLeft: 2 }} />}
+            title={
+              <Link
+                to={`/authors/${author.slug}`}
+                style={{ textDecoration: "none" }}
+              >
+                <Typography component="p" variant="p" color="text.secondary">
+                  {author.name}
+                </Typography>
+              </Link>
+            }
+          />
+        )}
+      </Box>
       <CardContent>
         <Link to={`/blogs/${slug}`} style={{ textDecoration: "none" }}>
           <Typography

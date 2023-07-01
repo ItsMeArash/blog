@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { GET_POST_INFO } from "../../graphql/queries";
 import Loader from "../shared/Loader";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import sanitizeHtml from "sanitize-html";
 import CommentForm from "../comments/CommentForm";
 import Comments from "../comments/Comments";
@@ -27,7 +27,7 @@ const BlogPage = () => {
         <Grid
           item
           xs={12}
-          mt={9}
+          mt={{xs: 9, sm: 12}}
           display="flex"
           justifyContent="space-between"
           alignItems="center"
@@ -40,7 +40,7 @@ const BlogPage = () => {
           >
             {data.post.title}
           </Typography>
-          <ArrowBackIosNewRoundedIcon
+          <ArrowBackIcon
             color="primary"
             cursor="pointer"
             onClick={() => navigate(-1)}
