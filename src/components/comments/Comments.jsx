@@ -12,6 +12,7 @@ const Comments = ({ slug }) => {
 
   if (error) return <h3>Something went wrong</h3>;
 
+  console.log(data);
   return (
     <Grid
       container
@@ -20,34 +21,52 @@ const Comments = ({ slug }) => {
         borderRadius: 4,
         py: 1,
         mt: 8,
+        display: "flex",
+        justifyContent: "center"
       }}
     >
-      <Grid item xs={12} m={2}>
-        <Typography component="p" variant="h6" fontWeight={700} color="primary">
-          کامنت‌ها
-        </Typography>
-        {data.comments.map((comment) => (
-          <Grid
-            item
-            xs={12}
-            key={comment.id}
-            m={2}
-            p={2}
-            border="1px silver solid"
-            borderRadius={1}
+      {data.comments.length ? (
+        <Grid item xs={12} m={2}>
+          <Typography
+            component="p"
+            variant="h6"
+            fontWeight={700}
+            color="primary"
           >
-            <Box component="div" display="flex" alignItems="center" mb={3}>
-              <Avatar>{comment.name[0]}</Avatar>
-              <Typography component="span" variant="p" fontWeight={700} mr={1}>
-                {comment.name}
+            کامنت‌ها
+          </Typography>
+          {data.comments.map((comment) => (
+            <Grid
+              item
+              xs={12}
+              key={comment.id}
+              m={2}
+              p={2}
+              border="1px silver solid"
+              borderRadius={1}
+            >
+              <Box component="div" display="flex" alignItems="center" mb={3}>
+                <Avatar>{comment.name[0]}</Avatar>
+                <Typography
+                  component="span"
+                  variant="p"
+                  fontWeight={700}
+                  mr={1}
+                >
+                  {comment.name}
+                </Typography>
+              </Box>
+              <Typography component="p" variant="p">
+                {comment.text}
               </Typography>
-            </Box>
-            <Typography component="p" variant="p">
-              {comment.text}
-            </Typography>
-          </Grid>
-        ))}
-      </Grid>
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Typography component="h3" variant="h5" color="primary" sx={{padding: 4}}>
+          تا حالا کامنتی ثبت نشده
+        </Typography>
+      )}
     </Grid>
   );
 };
