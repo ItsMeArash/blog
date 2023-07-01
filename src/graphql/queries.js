@@ -6,6 +6,7 @@ export const GET_BLOGS_INFO = gql`
       author {
         ... on Author {
           name
+          slug
           avatar {
             url
           }
