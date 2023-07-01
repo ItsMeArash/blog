@@ -22,7 +22,7 @@ const CardEl = ({ title, slug, coverPhoto, author }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        height: { xs: 420, sm: 445, md: 510, lg: 480, xl: 480 },
+        height: "100%",
       }}
     >
       <Box>
@@ -48,7 +48,7 @@ const CardEl = ({ title, slug, coverPhoto, author }) => {
           />
         )}
       </Box>
-      <CardContent>
+      <CardContent sx={{ flex: "1 0 auto" }}>
         <Link to={`/blogs/${slug}`} style={{ textDecoration: "none" }}>
           <Typography
             component="h3"
