@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
 // Material UI
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "./mui/theme.js";
 
 // styles
@@ -22,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <ApolloProvider client={client}>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <App />
       </ThemeProvider>
     </BrowserRouter>

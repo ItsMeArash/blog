@@ -11,6 +11,9 @@ const theme = createTheme({
     fontWeightFat: 900,
   },
   direction: "rtl",
+  palette: {
+    mode: "light"
+  }
 });
 
 export default theme;
