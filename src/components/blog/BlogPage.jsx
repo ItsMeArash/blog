@@ -9,10 +9,7 @@ import {
   Container,
   Grid,
   Typography,
-  AppBar,
-  Toolbar,
   IconButton,
-  useScrollTrigger,
   Zoom,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -92,11 +89,7 @@ const BlogPage = () => {
               <Typography component="p" variant="h5" fontWeight={700}>
                 {data.post.author.name}
               </Typography>
-              <Typography
-                component="p"
-                variant="p"
-                color="text.secondary"
-              >
+              <Typography component="p" variant="p" color="text.secondary">
                 {data.post.author.field}
               </Typography>
             </Box>
@@ -107,6 +100,12 @@ const BlogPage = () => {
                 __html: sanitizeHtml(data.post.content.html),
               }}
             ></div>
+          </Grid>
+          <Grid>
+            {/* Date Published */}
+            <Typography component="p" variant="p" color="text.secondary">
+              تاریخ انتشار: {data.post.datePublished}
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <CommentForm slug={slug} />

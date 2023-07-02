@@ -71,6 +71,7 @@ export const GET_POST_INFO = gql`
           field
         }
       }
+      datePublished
       content {
         html
       }
