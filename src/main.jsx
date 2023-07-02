@@ -4,10 +4,6 @@ import App from "./App.jsx";
 //GraphQL
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
-// Material UI
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import theme from "./mui/theme.js";
-
 // styles
 import "./styles/index.css";
 import "./styles/fonts.css";
@@ -21,10 +17,7 @@ const client = new ApolloClient({
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
+      <App />
     </BrowserRouter>
   </ApolloProvider>
 );
