@@ -49,15 +49,21 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     borderRadius: 20 / 2,
   },
 }));
-export default function CustomizedSwitches() {
+export default function CustomizedSwitches({ handleDark }) {
   const [checked, setChecked] = useState(false);
+
+  const handleChange = () => {
+    const updatedChecked = !checked;
+    setChecked(updatedChecked);
+    handleDark(updatedChecked);
+  };
 
   return (
     <FormControlLabel
       control={
         <MaterialUISwitch
           checked={checked}
-          onChange={() => setChecked(!checked)}
+          onChange={handleChange}
           sx={{ mx: 3, mb: 1 }}
         />
       }
